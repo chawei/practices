@@ -32,13 +32,9 @@ def is_happy_number?(num)
 end
 
 def calc_num(num)
-  result = 0
-  split_num_to_arr(num).each do |n|
-    result += n ** 2
-  end
-  return result
+  num.to_s.split(//).collect { |d| d.to_i ** 2 }.inject(0) { |x, y| x + y }
 end
 
-def split_num_to_arr(num)
-  num.to_s.split(//).map { |d| d.to_i }
-end
+p "is 16 happy number? #{is_happy_number?(16)}"    # no
+p "is 4 happy number? #{is_happy_number?(4)}"      # no
+p "is 100 happy number? #{is_happy_number?(100)}"  # yes
