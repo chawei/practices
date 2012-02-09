@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <script type="text/javascript" charset="utf-8">
+      function assertEqual(str1, str2) {
+        if (str1 === str2) {
+          console.log("Passed: "+ str1 + " == " +str2);
+        } else {
+          console.log("Failed: "+ str1 + " != " +str2);
+        }
+      }
+      
+      function substractOne(s) {
+        // s = (parseInt(s) - 1).toString(); // naive solution
+        
+        len      = s.length;
+        lastChar = s.charAt(len -1);
+        subStr   = s.substr(0, len -1);
+        if (lastChar == 0) {
+          s = substractOne(subStr) + '9';
+        } else {
+          s = subStr + (parseInt(lastChar) - 1).toString();
+        }
+        
+        s = s.replace(/^0+/, '');
+        return s;
+      }
+      
+      assertEqual(substractOne('15'), '14');
+      assertEqual(substractOne('1000000000000000000000005'), '1000000000000000000000004');
+      assertEqual(substractOne('10'), '9');
+      assertEqual(substractOne('9900'), '9899');
+    </script>
+  </head>
+  <body>
+    <h1>substractOne</h1>
+  </body>
+</html>
