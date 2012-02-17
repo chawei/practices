@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>create rand7 given rand5</h1>
+    <div id="result"></div>
+    <script type="text/javascript">
+      function rand5() {
+        return Math.floor(Math.random()*5);
+      }
+
+      function rand7() {
+        do {
+          var num = 5 * rand5() + rand5();
+        } while (num >= 21) 
+        return num % 7;
+      }
+
+      window.onload = function() {
+        var result = document.getElementById('result');
+        result.innerHTML = rand7();
+      }
+    </script>
+  </body>
+</html>

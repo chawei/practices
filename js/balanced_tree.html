@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Balanced Tree</h1>
+    <script type="text/javascript">
+      function Node(data) {
+        this.data  = data;
+        this.left  = null;
+        this.right = null;
+      }
+
+      function getNodeFromArr(arr, start, end) {
+        if ( start > end ) {
+          return null;
+        }
+        var midIndex = Math.round((start + end)/2); 
+        var node     = new Node(arr[midIndex]);
+        
+        node.left    = getNodeFromArr(arr, start, midIndex-1); 
+        node.right   = getNodeFromArr(arr, midIndex+1, end);
+        return node;
+      }
+
+      function createBalancedTree(arr) {
+        return getNodeFromArr(arr, 0, arr.length-1);
+      }
+
+      var arr = [1, 2, 3, 4, 5];
+      var root = createBalancedTree(arr);
+    </script>
+  </body>
+</html>

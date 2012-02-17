@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>powerset</h1>
+    <script type="text/javascript">
+      Array.prototype.powerset = function() {
+        var arr      = this;
+        var all_sets = [[]];
+
+        for (var i = 0; i < arr.length; i++) {
+          elem    = arr[i];
+          subsets = [];
+          for (var j = 0; j < all_sets.length; j++) {
+            var set = all_sets[j].concat([elem]);
+            console.log(set);
+            subsets.push(set);
+          }
+          for (var m = 0; m < subsets.length; m++) {
+            all_sets.push(subsets[m]);
+          }
+        }
+        return all_sets;
+      }
+
+      var arr = [0, 1, 2, 3];
+      console.log(arr.powerset());
+    </script>
+  </body>
+</html>

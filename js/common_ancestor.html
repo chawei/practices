@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>common ancestor</h1>
+
+    <script type="text/javascript">
+      function commonAncestor(parent, node1, node2) {
+        if ( covers(parent.left, node1) && covers(parent.left, node2) ) {
+          return commonAncestor(parent.left, node1, node2);
+        } 
+        if ( covers(parent.right, node1) && covers(parent.right, node2) ) {
+          return commonAncestor(parent.right, node1, node2);
+        }
+        return parent;
+      }
+
+      function covers(parent, node) {
+        if ( parent == null ) return false;
+        if ( parent == node ) return true;
+        return covers(parent.left, node) || covers(parent.right, node);
+      }
+    </script>
+  </body>
+</html>
