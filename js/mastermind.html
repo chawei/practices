@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>The Game of Master Mind</h1>
+    <div id="result"></div>
+    <script type="text/javascript">
+
+      function MasterMind(guess, solution) {
+        var chars = ['R', 'Y', 'G', 'B'];
+        guess     = guess.split('');
+        solution  = solution.split('');
+        this.hitCount = 0;
+        this.pseudoHitCount = 0; 
+
+        var guessRest = {}, solRest = {};
+        for (var i=0; i < chars.length; i++) {
+          var char = chars[i];
+          guessRest[char] = solRest[char] = 0;
+        }
+
+        for (var i=0; i < 4; i++) {
+          if (guess[i] === solution[i]) {
+            this.hitCount += 1;
+          } else {
+            guessRest[guess[i]]  += 1;
+            solRest[solution[i]] += 1;
+          }
+        }
+
+        for (var i=0; i < chars.length; i++) {
+          var char = chars[i];
+          this.pseudoHitCount += Math.min(guessRest[char], solRest[char])
+        }
+      }
+
+      window.onload = function() {
+        var result = document.getElementById('result');
+        var game   = new MasterMind('RGGB', 'RGYB');
+      }
+    </script>
+  </body>
+</html>

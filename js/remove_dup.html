@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>remove duplicated char in string</h1>
+    <div id="result"></div>
+    <script type="text/javascript">
+      String.prototype.removeDup = function() {
+        var arr = this.split('');
+        var charHash = {};
+        var index = 0;
+        while (arr[index] !== undefined) {
+          if (charHash[arr[index]] !== undefined) {
+            arr.splice(index, 1);
+          } else {
+            charHash[arr[index]] = true;
+          }
+          index += 1;
+        }
+        return arr.join('');
+      }
+
+      window.onload = function() {
+        var result = document.getElementById('result');
+        var str    = "apple is good"; 
+        result.innerHTML = ["removing dup from \"", str, "\" becomes \"", str.removeDup(), "\""].join('');
+      }
+    </script>
+  </body>
+</html>

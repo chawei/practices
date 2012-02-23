@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>reverse string</h1>
+    <div id="result"></div>
+    <script type="text/javascript">
+      String.prototype.reverse = function() {
+        var arr   = this.split('');
+        var start = 0;
+        var end   = arr.length - 1;
+        while (start < end) {
+          var tmp    = arr[start];
+          arr[start] = arr[end];
+          arr[end]   = tmp;
+          start += 1;
+          end   -= 1;
+        }
+        return arr.join('');
+      }
+
+      window.onload = function() {
+        var result = document.getElementById('result');
+        var str    = "milk";
+        result.innerHTML = ["reverse ", str, " = ", str.reverse()].join('');
+      }
+    </script>
+  </body>
+</html>

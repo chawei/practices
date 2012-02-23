@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Anagram</h1>
+    <div id="result"></div>
+    <script type="text/javascript">
+
+      function isAnagramBySort(str1, str2) {
+        return str1.split('').sort().join() === str2.split('').sort().join();
+      }
+
+      window.onload = function() {
+        var result = document.getElementById('result');
+        var str1 = 'mary';
+        var str2 = 'army';
+        console.log(isAnagramBySort(str1, str2));
+        console.log(isAnagramBySort('ary', 'army'));
+      }
+    </script>
+  </body>
+</html>

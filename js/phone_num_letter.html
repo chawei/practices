@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Phone number-letter problem</h1>
+    <div id="result"></div>
+    <script type="text/javascript">
+      var digitalMap = {
+        '2': ['A', 'B', 'C'],
+        '3': ['D', 'E', 'F'],
+        '4': ['G', 'H', 'I'],
+        '5': ['J', 'K', 'L'],
+        '6': ['M', 'N', 'O'],
+        '7': ['P', 'Q', 'R', 'S'],
+        '8': ['T', 'U', 'V'],
+        '9': ['W', 'X', 'Y', 'Z']
+      }
+
+      function findAllCombination(numbers) {
+        var allSets = [''];
+        for (var i=0; i < numbers.length; i++) {
+          var chars = digitalMap[numbers[i]];
+          var subsets = [];
+          for (var c=0; c < chars.length; c++) {
+            for (var s=0; s < allSets.length; s++) {
+              subsets.push(allSets[s]+chars[c]);
+            }
+          }
+          allSets = subsets;
+        }
+        return allSets;
+      }
+
+      window.onload = function() {
+        var result = document.getElementById('result');
+        result.innerHTML = findAllCombination(['4', '2', '6']);
+      }
+    </script>
+  </body>
+</html>
